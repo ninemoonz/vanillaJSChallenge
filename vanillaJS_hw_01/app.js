@@ -18,8 +18,7 @@ console.log(title);
 
 const superEventHandler = {
   randColor: function () {
-    const colorChosen = colors[Math.floor(Math.random() * colors.length)];
-    title.style.color = colorChosen;
+    title.style.color = colors[Math.floor(Math.random() * colors.length)];
   },
 
   mouseOver: function () {

@@ -1,0 +1,15 @@
+body {
+    color: white;
+}
+
+.default{
+    background-color: orange;
+}
+
+.increased-width{
+    background-color:orchid;
+}
+
+.decreased-width{
+    background-color:steelblue;
+}

@@ -14,34 +14,42 @@ const machinePoint = document.querySelector("#machinePoints");
 function submitEvent(event) {
     event.preventDefault();
     
+    //values for range and guess input
     const rangeValue = rangeInput.value;
     const value = guessInput.value; 
-    
-    const sharedNumber = Math.ceil(Math.random() * rangeValue);
-    const randNum = Math.ceil(Math.random() * rangeValue);
 
+    localStorage.setItem("range", rangeValue);
+    localStorage.setItem("value", value);
+
+    const savedRangeValue = localStorage.getItem("range");
+    const savedGuessValue = localStorage.getItem("value");
+
+    const intRange = parseInt(savedRangeValue);
+    const intGuess = parseInt(savedGuessValue);
+
+    if(intGuess > intRange){
+        alert(`Please enter number between 0 to ${savedRangeValue}`);
+    }
     
+    //values for shared number and machine number
+    const sharedNumber = Math.ceil(Math.random() * rangeValue);
+    const machineNum = Math.ceil(Math.random() * rangeValue);
+
+    //absolute values of difference
     const absPlayer = Math.abs(sharedNumber - value);
-    console.log(absPlayer);
-    const absMachine = Math.abs(sharedNumber - randNum);
-    console.log(absMachine);
+    const absMachine = Math.abs(sharedNumber - machineNum);
 
     playerNumber.innerText = `You chose: ${value} (closeness to shared number is ${absPlayer})`;
-    machineNumber.innerText = `Machine chose: ${randNum} (closeness to shared number is ${absMachine})`;
+    machineNumber.innerText = `Machine chose: ${machineNum} (closeness to shared number is ${absMachine})`;
     sharedNumberBox.innerText = `Shared Number is ${sharedNumber}`;
 
-    if(value > rangeValue){
-        alert(`please enter number between 0 to ${rangeValue}`);
-    }else if(absPlayer < absMachine){
-        resultText.innerText = "Player wins!";
-        
+    if(absPlayer < absMachine){
+        resultText.innerText = "Player wins!";             
     }else if(absPlayer > absMachine){
         resultText.innerText = "Machine wins!";
-        
     }else{
         resultText.innerText = "It's a draw!";
     }
-
 
 }
 

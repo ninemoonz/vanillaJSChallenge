@@ -3,13 +3,13 @@ const rangeInput = document.querySelector("#jsGenerator #jsRange");
 const guessInput = document.querySelector("#jsGenerator #jsGuessInput");
 const guessButton = document.querySelector("#jsGenerator #jsPlayButton");
 
+const chosenNumber = document.querySelector("#jsChosen");
 const playerNumber = document.querySelector("#jsChosen .playerNumber");
 const machineNumber = document.querySelector("#jsChosen .machineNumber");
+
+const result = document.querySelector("#jsResult");
 const resultText = document.querySelector("#jsResult #resultText");
 const sharedNumberBox = document.querySelector("#jsSharedNumberBox #jsSharedNumber");
-
-const playerPoint = document.querySelector("#playerPoints");
-const machinePoint = document.querySelector("#machinePoints");
 
 function submitEvent(event) {
     event.preventDefault();
@@ -21,14 +21,21 @@ function submitEvent(event) {
     localStorage.setItem("range", rangeValue);
     localStorage.setItem("value", value);
 
-    const savedRangeValue = localStorage.getItem("range");
-    const savedGuessValue = localStorage.getItem("value");
+    const savedRangeValue = localStorage.getItem("range", 10);
+    const savedGuessValue = localStorage.getItem("value", 10);
 
     const intRange = parseInt(savedRangeValue);
     const intGuess = parseInt(savedGuessValue);
 
     if(intGuess > intRange){
         alert(`Please enter number between 0 to ${savedRangeValue}`);
+        sharedNumberBox.classList.add("hidden");
+        chosenNumber.classList.add("hidden");
+        result.classList.add("hidden");
+    }else{
+        sharedNumberBox.classList.remove("hidden");
+        chosenNumber.classList.remove("hidden");
+        result.classList.remove("hidden");
     }
     
     //values for shared number and machine number
@@ -44,7 +51,7 @@ function submitEvent(event) {
     sharedNumberBox.innerText = `Shared Number is ${sharedNumber}`;
 
     if(absPlayer < absMachine){
-        resultText.innerText = "Player wins!";             
+        resultText.innerText = "Player wins!";
     }else if(absPlayer > absMachine){
         resultText.innerText = "Machine wins!";
     }else{

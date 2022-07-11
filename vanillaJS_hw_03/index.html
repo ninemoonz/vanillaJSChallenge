@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vanillaJS Challenge 03</title>
+    <link rel="stylesheet" href="style.css" class="style" />
+  </head>
+  <body>
+    <h1>Random Number Game</h1>
+    <span class="rule">
+      Rule: One who gets closer value to the shared number will win!
+    </span>
+
+    <form id="jsGenerator">
+      <span>Generate a number between 0 and </span>
+      <input id="jsRange" type="number" min="0" max="40" required />
+      <span>Guess the number: </span>
+      <input id="jsGuessInput" type="number" required />
+      <input id="jsPlayButton" type="submit" value="play!" />
+    </form>
+
+    <div id="jsSharedNumberBox">
+      <h2 id="jsSharedNumber"></h2>
+    </div>
+
+    <div id="jsChosen">
+      <span class="playerNumber"></span>
+      <br />
+      <span class="machineNumber"></span>
+    </div>
+
+    <div id="jsResult">
+      <h3 id="resultText"></h3>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

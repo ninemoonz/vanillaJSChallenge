@@ -25,5 +25,4 @@ function resizeEvent(){
 
 resizeEvent();
 
-
 window.addEventListener("resize", resizeEvent);

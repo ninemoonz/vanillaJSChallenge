@@ -3,7 +3,6 @@ const pepe = document.querySelector(".pepe");
 
 const christmas = new Date("Dec 24, 2022 00:00:00").getTime();
 
-
 function countDown(){
     const today = new Date().getTime();
     const timeLeft = christmas - today;
